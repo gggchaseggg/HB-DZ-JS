@@ -1,29 +1,51 @@
-// 1. Удалите из массива дубликаты: const arr = [1, 2, 3, 5, 1, 6, 2, 5, 6, 7]; 
-let arr = [1, 2, 3, 5, 1, 6, 2, 5, 6, 7];
-arr = [...(new Set(arr))];
-console.log(arr);
+// 1.Напишите с помощью изученной конструкции try/catch простую валидацию инпута для числового значения.
+// Если поле пустое, текстовое содержимое не является числом, или значение меньше 5 или больше 10 —
+// пробросьте ошибку с соответствующим текстом. Чтобы пользователю было понятен текст ошибки,
+// выводите текст ошибки в абзац под инпутом.
+const form = document.querySelector('.forma');
+const input = form.querySelector('.text');
+const err = document.querySelector('.input_info');
 
-// 2. Объедините 2 объекта в один: const obj1 = { id: 1, name: ‘userName’ } и const obj2 = { id: 1, password: ‘qwerty’ } 
-const obj1 = { id: 1, name: 'userName' }
-const obj2 = { id: 1, password: 'qwerty' }
+form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    try {
+        let value = input.value;
 
-const obj3 = {...obj1, ...obj2 };
-console.log(obj3);
+        if (value === '') {
+            throw new Error('Пустой инпут');
+        } else {
+            value = Number.parseInt(value)
+            if (Number.isNaN(value)) {
+                throw new Error('Введите число');
+            } else if (value < 5 || value > 10) {
+                throw new Error('Вы ввели не правильное число')
+            } else {
+                err.textContent = 'Вроде все хорошо';
+            }
+        }
+    } catch (error) {
+        err.textContent = error.message;
+    }
 
-// 3. Сократите объявление функции в одну строку, используя новый синтаксис ES6: const add = function (x, y) { return x + y } 
-const add = (x, y) => x + y;
-console.log(add(1, 2));
+})
 
-// 4. Напишите функцию, с помощью которой можно будет выполнять различные действия с задержкой
-//Функция, которую нужно реализовать: 
-// const sleep = ms => { ... } 
-// Её использование для выполнения действия с задержкой 5 секунд 
-// sleep(5000).then(() => { console.log('Выполнилось через 5 секунд!');});
-
-const sleep = ms => {
-    return new Promise((resolve, reject) => {
-        setTimeout(resolve, ms)
-    })
+// 2.Переписать пример лотереи на async/await.
+// ( https://codesandbox.io/s/quirky-brown-suemou?file=/src/index.js )
+function lottery() {
+    console.log("Вы начали игру");
+    let promise = new Promise(function(resolve, reject) {
+        setTimeout(function() {
+            Math.random(0) > 0.5 ? resolve() : reject("Вы промахнулись");
+        }, 1000);
+    });
+    return promise;
 }
 
-sleep(5000).then(() => { console.log('Выполнилось через 5 секунд!') });
+const start = async() => {
+    try {
+        await lottery();
+        console.log("Вы выиграли - 300$")
+    } catch (error) {
+        console.log("Вы проиграли")
+    }
+}
