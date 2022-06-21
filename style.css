@@ -111,9 +111,9 @@ form {
     text-transform: uppercase;
 }
 
-.article-body {
-    font-size: 16px !important;
-    font-weight: 100 !important;
-    font-family: serif !important;
+p.article-body {
+    font-size: 16px;
+    font-weight: 100;
+    font-family: serif;
     text-align: justify;
 }

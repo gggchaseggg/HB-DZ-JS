@@ -6,6 +6,7 @@ const searchInput = document.querySelector(".js-input");
 
 loadBtn.addEventListener("click", (evt) => {
     resultsContainer.innerHTML = '';
+    articlesContainer.innerHTML = '';
     evt.preventDefault();
     if (searchInput.value != '') {
         const searchValue = searchInput.value.trim().toLowerCase();
