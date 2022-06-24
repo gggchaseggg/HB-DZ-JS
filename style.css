@@ -123,6 +123,50 @@ p.article-body {
     text-align: justify;
 }
 
+.switch-label {
+    cursor: pointer;
+}
+
+.switch-label:hover {
+    filter: brightness(1.2);
+}
+
+.checkbox__switcher {
+    margin-right: 10px;
+    display: inline-block;
+    position: relative;
+    top: 8px;
+    width: 50px;
+    height: 30px;
+    border-radius: 30px;
+    background-color: #243743;
+    transition: 0.3s;
+}
+
+.checkbox__switcher::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 22px;
+    height: 22px;
+    background-color: rgb(0, 127, 255);
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+input.js-dark-theme:checked~.checkbox__switcher {
+    background-color: white;
+}
+
+input.js-dark-theme:checked~.checkbox__switcher::before {
+    left: 24px;
+}
+
+input.js-dark-theme {
+    display: none;
+}
+
 .dark-theme {
     background-color: #222226;
     color: white;
