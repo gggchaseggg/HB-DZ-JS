@@ -1,3 +1,9 @@
+html,
+body {
+    padding: 0;
+    margin: 0;
+}
+
 .page-wrapper {
     height: 100vh;
     background-color: #f3f6f9;
@@ -54,8 +60,7 @@ form {
 
 .results-container {
     flex-grow: 1;
-    background-color: rgb(255, 255, 255);
-    color: rgb(61, 71, 82);
+    color: inherit;
     border-radius: 8px;
     border: 1px solid rgb(229, 232, 236);
     overflow: hidden;
@@ -116,4 +121,17 @@ p.article-body {
     font-weight: 100;
     font-family: serif;
     text-align: justify;
+}
+
+.dark-theme {
+    background-color: #222226;
+    color: white;
+}
+
+input.dark-theme {
+    border-color: white;
+}
+
+.results-container.dark-theme {
+    background-color: #333336 !important;
 }

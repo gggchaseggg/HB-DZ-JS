@@ -1,8 +1,31 @@
+const html = document.querySelector(".page-wrapper");
 const loadBtn = document.querySelector(".js-load");
 const resultsContainer = document.querySelector(".js-git");
 const articlesContainer = document.querySelector(".js-articles");
+const infoContainer = document.querySelector(".js-results");
 const searchInput = document.querySelector(".js-input");
+const darkThemeCheckbox = document.querySelector(".js-dark-theme");
 
+if (localStorage.getItem("darkTheme") === '1') {
+    html.classList.add("dark-theme");
+    searchInput.classList.add("dark-theme");
+    infoContainer.classList.add("dark-theme");
+    darkThemeCheckbox.setAttribute("checked", "checked");
+}
+
+darkThemeCheckbox.addEventListener("change", (data) => {
+    if (darkThemeCheckbox.checked) {
+        localStorage.setItem("darkTheme", 1);
+        html.classList.add("dark-theme");
+        searchInput.classList.add("dark-theme");
+        infoContainer.classList.add("dark-theme");
+    } else {
+        localStorage.setItem("darkTheme", 0);
+        html.classList.remove("dark-theme");
+        searchInput.classList.remove("dark-theme");
+        infoContainer.classList.remove("dark-theme");
+    }
+});
 
 loadBtn.addEventListener("click", (evt) => {
     resultsContainer.innerHTML = '';
